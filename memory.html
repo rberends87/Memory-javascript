@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="js/classes/card.js"></script>
+    <script type="text/javascript" src="js/classes/cardgame.js"></script>
+    <script type="text/javascript" src="js/classes/cardimageprinter.js"></script>
+    <script type="text/javascript" src="js/classes/loremapi.js"></script>
+    <script type="text/javascript" src="js/classes/dogapi.js"></script>
+    <script type="text/javascript" src="js/classes/catapi.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+    <link rel="stylesheet" href="memorystyle.css">
+    <title>Memory spel</title>
+</head>
+
+<body backgroud-color onload="createGame();">
+
+    <p id="demo"></p>
+
+    <div class="background">
+        <div class="game">
+            <div class="title">
+                <h1>Memory spel</h1>
+                <div class="stats">
+                    <h3 id="timepassed">Verlopen tijd:</h3>
+                    <h3 id="foundpairs">Gevonden paren:</h3>
+                    <h3 id="timeleft">Resterende tijd:</h3>
+                    <div class="timer">
+
+                        <div class="timerlefttime" id="timerlefttime"></div>
+                        <div class="timerpassedtime" id="timerpassedtime"></div>
+
+                    </div>
+                    <br>
+                </div>
+            </div>
+
+            <div id="speelveld" class="speelveld">
+
+            </div>
+
+            <div class="menuouter">
+                <div class="menuinner">
+                    <h2>Top 5:</h2>
+                    <ol>
+                        <li>speler 1 (80)</li>
+                        <li>speler 5 (110)</li>
+                        <li>speler 3 (120)</li>
+                        <li>speler 7 (160)</li>
+                        <li>speler 9 (299)</li>
+                    </ol>
+                    <h3>Gemiddelde speeltijd: 83</h3>
+                </div>
+
+                <br>
+
+                <div class="menuinner">
+
+                    <form>
+                        <label for="theme">Thema:</label>
+                        <br>
+                        <select class="selector" name="theme" id="theme" onchange="getTheme();">
+                            <option value="LoremApi">Lorem Picsum</option>
+                            <option value="DogApi">Honden</option>
+                            <option value="CatApi">Katten</option>
+                        </select>
+                    </form>
+                    <br>
+
+                    <form>
+                        <label for="boardsize">Aantal kaarten:</label>
+                        <br>
+                        <select class="selector" name="boardsize" id="boardsize" onchange="getBoardsize();">
+                            <option value="4">4</option>
+                            <option value="8">8</option>
+                            <option value="16">16</option>
+                            <option value="26">26</option>
+                            <option value="36" selected>36</option>
+                        </select>
+                    </form>
+
+                    <br>
+
+                    <div>
+                        <label for="kaartgeslotenselector">Gesloten kaart:</label>
+                        <br>
+                        <input class="selector" type="color" id="kaartgeslotenselector" name="kaartgeslotenselector"
+                            onchange="setColorCardClosed();" value="#575366">
+                    </div>
+
+                    <br>
+
+                    <div>
+                        <label for="kaartopenselector">Open kaart:</label>
+                        <br>
+                        <input class="selector" type="color" id="kaartopenselector" name="kaartopenselector"
+                            onchange="setColorCardOpened();" value="#FF7B9C">
+                    </div>
+
+                    <br>
+
+                    <div>
+                        <label for="kaartgevondenselector">Gevonden kaart:</label>
+                        <br>
+                        <input class="selector" type="color" id="kaartgevondenselector" name="kaartgevondenselector"
+                            onchange="setColorCardFound();" value="#4EB18B">
+                    </div>
+
+                    <br>
+                    <br>
+
+                    <button class="selector" type="button" onclick="createGame();">Nieuw spel starten</button>
+
+                    <br>
+                    <br>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

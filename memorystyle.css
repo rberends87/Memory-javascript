@@ -1,0 +1,193 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #FFFFFF;
+    font-size: large;
+    background-color: #D1E3DD;
+}
+
+h1 {
+    font-size: xx-large;
+}
+
+h2 {
+    font-size: x-large;
+}
+
+img {
+    border-radius: 15px;
+    padding: 5%;
+    height: 90%;
+    width: 90%;
+    object-fit: cover;
+    vertical-align: middle;
+}
+
+.vraagteken {
+    font-family: Papyrus;
+    opacity: 0.7;
+    font-size: 100%;
+    margin-top: 30%;
+}
+
+.background {
+    width: 100%;
+    height: auto;
+}
+
+.game {
+    max-width: 1300px;
+    min-width: 250px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.title {
+    width: 100%;
+    min-width: 250px ;
+    height: auto;
+    background-color: #32292F;
+    text-align: center;
+    border-radius: 15px;
+    margin: auto;
+}
+
+.stats {
+    width: auto;
+    min-width: 150px;
+    height: auto;
+    margin-left: 20%;
+    margin-right: 20%;
+    text-align: center;
+}
+
+.timer {
+    display: flex;
+    height: auto;
+    min-height: 10px;
+    max-width: 280px;
+    margin: auto;
+    border: 0px;
+    padding: 0px;
+    text-align: center;
+}
+
+.timerpassedtime {
+    display: inline-block;
+    height: auto;
+    min-height: 10px;
+    margin: 0px;
+    border: 0px;
+    padding: 0px;
+    background-color: rgb(248, 94, 0);
+}
+
+.timerlefttime {
+    display: inline-block;
+    height: auto;
+    min-height: 10px;
+    background-color: rgb(0, 248, 17);
+    margin: 0px;
+    border: 0px;
+    padding: 0px;
+}
+
+.timerouter {
+    height: auto;
+    width: auto;
+    border: 10px;
+    border-width: 10px;
+}
+
+.speelveld {
+    max-width: 900px;
+    width: auto;
+    min-width: 250px;
+    height: auto;
+    max-height: auto;
+    float: left;
+    margin: 2%
+}
+
+.menuouter {
+    width: 260px;
+    height: auto;
+    float: left;
+    margin: 2%;
+}
+
+.menuinner {
+    width: 200px;
+    height: auto;
+    background-color: #32292F;
+    text-align: left;
+    border-radius: 10px;
+    margin: 2%;
+    padding: 10%;
+}
+
+.kaartgesloten {
+    aspect-ratio: 1/1;
+    max-width: 25%;
+    min-width: 116px;
+    width: 140px;
+    height: auto;
+    margin: 5px;
+    background-color: #575366;
+    float: left;
+    border-radius: 15px;
+    font-size: xx-large;
+    text-align: center;
+}
+
+.kaartgeslotendisabled {
+    aspect-ratio: 1/1;
+    max-width: 25%;
+    min-width: 116px;
+    width: 140px;
+    height: auto;
+    margin: 5px;
+    background-color: #575366;
+    float: left;
+    border-radius: 15px;
+    font-size: xx-large;
+    text-align: center;
+}
+
+.kaartopen {
+    aspect-ratio: 1/1;
+    max-width: 25%;
+    min-width: 116px;
+    width: 140px;
+    height: auto;
+    margin: 5px;
+    background-color: #FF7B9C;
+    float: left;
+    border-radius: 15px;
+    font-size: xx-large;
+    text-align: center;
+}
+
+.kaartgevonden {
+    aspect-ratio: 1/1;
+    max-width: 25%;
+    min-width: 116px;
+    width: 140px;
+    height: auto;
+    margin: 5px;
+    background-color: #4EB18B;
+    float: left;
+    border-radius: 15px;
+    font-size: xx-large;
+    text-align: center;
+}
+
+.selector {
+    font-size: large;
+    width:175px;
+    height: 35px;
+}
+
+div.kaartgesloten:hover {
+    background-color: #FFC759;
+}
