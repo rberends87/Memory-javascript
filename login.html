@@ -6,7 +6,6 @@
     <title>Inloggen</title>
     <link rel="stylesheet" type="text/css" href="formstyle.css">
     <link rel="stylesheet" type="text/css" href="navbarstyle.css">
-
 </head>
 <body>
     <nav>
@@ -18,7 +17,7 @@
     </nav>
     <div class="container">
         <h2>Inloggen</h2>
-        <form action="#">
+        <form id="loginForm">
             <div class="input-group">
                 <label for="username">Gebruikersnaam:</label>
                 <input type="text" id="username" name="username" required>
@@ -30,5 +29,51 @@
             <button type="submit" class="btn">Inloggen</button>
         </form>
     </div>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Voorkom standaard formulierinzending
+
+            // Verkrijg gebruikersnaam en wachtwoord uit het formulier
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // Maak een object met de gegevens om naar de API te sturen
+            const data = {
+                username: username,
+                password: password
+            };
+
+            // Voer een API-aanroep uit met behulp van Fetch API
+            fetch("http://localhost:8000/api/login_check", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Inloggen was succesvol
+                    
+                    // Voer hier de gewenste acties uit, bijvoorbeeld doorsturen naar een andere pagina
+                    return response.json();
+
+                    //console.log("Inloggen succesvol");
+                } else {
+                    // Inloggen mislukt
+                    console.error("Inloggen mislukt");
+                }
+            })
+            .then(json => {
+                localStorage.setItem('JWT',json.token);
+                let url = window.location.href;
+                window.location.href = url.substring(0,url.lastIndexOf('/')+1)+'/memory.html';
+            })
+            .catch(error => {
+                console.error("Fout bij het uitvoeren van de API-aanroep:", error);
+            });
+        });
+    </script>
 </body>
 </html>

@@ -17,7 +17,7 @@
     </nav>
     <div class="container">
         <h2>Registreer</h2>
-        <form action="#">
+        <form id="registerForm">
             <div class="input-group">
                 <label for="name">Naam:</label>
                 <input type="text" id="name" name="name" required>
@@ -37,5 +37,60 @@
             <button type="submit" class="btn">Registreer</button>
         </form>
     </div>
+
+    <script>
+        document.getElementById("registerForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Voorkom standaard formulierinzending
+
+            // Verkrijg naam, e-mail en wachtwoord uit het formulier
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const passwordconfirm = document.getElementById("confirm_password").value;
+
+            if (password !== passwordconfirm) {
+                let passwordfield = document.getElementById("password");
+                passwordfield.style.display = "block";
+                passwordfield.style.border = "1px solid #F00";
+
+                let passwordfield2 = document.getElementById("confirm_password");
+                passwordfield2.style.display = "block";
+                passwordfield2.style.border = "1px solid #F00";
+
+                console.log("passwordconfirm matcht niet");
+                return;
+            }
+
+            // Maak een object met de gegevens om naar de API te sturen
+            const data = {
+                username: name, // Hier gebruik ik de naam als gebruikersnaam, pas aan zoals nodig
+                email: email,
+                password: password
+            };
+
+            // Voer een API-aanroep uit met behulp van Fetch API
+            fetch("http://localhost:8000/register", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Registratie was succesvol
+                    let url = window.location.href;
+                    window.location.href = url.substring(0,url.lastIndexOf('/')+1)+'/login.html';
+                    //console.log("Registratie succesvol");
+                } else {
+                    // Registratie mislukt
+                    console.error("Registratie mislukt");
+                }
+            })
+            .catch(error => {
+                console.error("Fout bij het uitvoeren van de API-aanroep:", error);
+            });
+        });
+    </script>
 </body>
 </html>
