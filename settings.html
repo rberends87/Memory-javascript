@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width-device-width, initial-scale=1.0">
+    <title>Instellingen</title>
+    <link rel="stylesheet" type="text/css" href="formstyle.css">
+    <link rel="stylesheet" type="text/css" href="navbarstyle.css">
+    <script type="text/javascript" src="js/auth.js"></script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="memory.html" style="margin-left: 1%;">Home</a></li>
+            <script>
+                setNavbarLinks();
+            </script>
+        </ul>
+    </nav>
+    <div class="container">
+        <h2>Instellingen</h2>
+        <form id="settingsForm">
+            <div class="input-group">
+                <label for="theme">Thema:</label>
+                <select id="theme" name="theme">
+                    <option value="LoremApi">Lorem Picsum</option>
+                    <option value="DogApi">Honden</option>
+                    <option value="CatApi">Katten</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="boardsize">Aantal kaarten:</label>
+                <select id="boardsize" name="boardsize">
+                    <option value="4">4</option>
+                    <option value="8">8</option>
+                    <option value="16">16</option>
+                    <option value="26">26</option>
+                    <option value="36" selected>36</option>
+                </select>
+            </div>
+
+            <!-- Voeg hier 3 cardcolor pickers toe voor de gesloten, open en gevonden kaarten -->
+            <div class="input-group">
+                <label for="closedcardcolor">Gesloten kaart kleur:</label>
+                <input type="color" id="closedcardcolor" name="closedcardcolor" value="#575366">
+            </div>
+
+            <div class="input-group">
+                <label for="opencardcolor">Open kaart kleur:</label>
+                <input type="color" id="opencardcolor" name="opencardcolor" value="#ffffff">
+            </div>
+
+            <div class="input-group">
+                <label for="foundcardcolor">Gevonden kaart kleur:</label>
+                <input type="color" id="foundcardcolor" name="foundcardcolor" value="#00ff00">
+            </div>
+
+            <!-- Voeg hier meer instellingen toe indien nodig -->
+            
+            <!-- Voeg hier een veld toe voor het wijzigen van het e-mailadres -->
+            <!-- Dit veld vereist een geldig e-mailadres en een bevestigingsknop -->
+            <!-- Het e-mailadres wordt alleen gewijzigd als de gebruiker op de bevestigingsknop klikt -->
+            <!-- Het e-mailadres wordt gevalideerd met behulp van een reguliere expressie -->
+            <!-- Bron: 6 -->
+            
+            <div class="input-group">
+                <label for="email">E-mailadres:</label>
+                <input type="text" id="email" name="email" placeholder="example@example.com">
+                <!-- Voeg hier een knop toe om het e-mailadres te bevestigen -->
+                <!-- Deze knop roept een functie aan die het e-mailadres controleert en opslaat -->
+                <!-- De functie geeft ook een melding weer als het e-mailadres ongeldig of al in gebruik is -->
+                <!-- De functie maakt gebruik van de Fetch API om een API-aanroep uit te voeren naar de server -->
+                <!-- De API-aanroep vereist het JWT-token van de gebruiker als autorisatieheader -->
+                <!-- De API-aanroep stuurt het nieuwe e-mailadres als JSON-gegevens in de body -->
+                <!-- De API-aanroep ontvangt een JSON-antwoord met een statuscode en een bericht -->
+                <!-- De functie verwerkt het antwoord en toont het bericht aan de gebruiker -->
+                
+                <button type="button" id="confirmEmail" onclick="confirmEmail()">Bevestigen</button>
+
+                <!-- Voeg hier een script toe dat de functie voor het bevestigen van het e-mailadres definieert -->
+                
+
+                <!-- <script>
+                    // Deze functie controleert en slaat het e-mailadres op
+                    function confirmEmail() {
+                        // Verkrijg het e-mailadres uit het veld
+                        const email = document.getElementById("email").value;
+
+                        // Controleer of het e-mailadres geldig is met behulp van een reguliere expressie
+                        // Bron: 6
+                        const regex = /\S+@\S+\.\S+/;
+                        if (!regex.test(email)) {
+                            // Het e-mailadres is ongeldig, toon een foutmelding
+                            alert("Ongeldig e-mailadres. Voer een geldig e-mailadres in.");
+                            return;
+                        }
+
+                        // Maak een object met de gegevens om naar de API te sturen
+                        const data = {
+                            email: email
+                        };
+
+                        // Voer een API-aanroep uit met behulp van Fetch API
+                        fetch("http://localhost:8000/api/change_email", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                                "Authorization": "Bearer " + localStorage.getItem('JWT') // Voeg JWT-token toe aan de header
+                            },
+                            body: JSON.stringify(data)
+                        })
+                        .then(response => {
+                            if (response.ok) {
+                                // Het e-mailadres is gewijzigd, toon een succesmelding
+                                return response.json();
+                            } else {
+                                // Er is iets misgegaan, toon een foutmelding
+                                console.error("Fout bij het wijzigen van het e-mailadres");
+                            }
+                        })
+                        .then(json => {
+                            // Verwerk het antwoord van de API, bijvoorbeeld door de statuscode en het bericht te tonen
+                            alert("Statuscode: " + json.status + "\nBericht: " + json.message);
+                        })
+                        .catch(error => {
+                            console.error("Fout bij het uitvoeren van de API-aanroep:", error);
+                        });
+                    }
+                </script> -->
+            </div>
+
+            <!-- Voeg hier een knop toe om de wijzigingen op te slaan -->
+            <button type="submit" class="btn">Opslaan</button>
+
+        </form>
+    </div>
+
+    <!-- Voeg hier de script code toe om de instellingen te verwerken en op te slaan -->
+    
+</body>
+</html>
+
