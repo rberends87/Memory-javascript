@@ -93,6 +93,35 @@ function getPlayerID() {
     }
 }
 
+//update het e-mailadres van account
+function updateEmail() {
+    let emailadres = document.getElementById("email").value;
+
+    fetch("http://localhost:8000/api/player/" + getPlayerID() + "/email", {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8',
+            'Authorization': 'Bearer ' + getLocalToken()
+        },
+        body: JSON.stringify({
+            email: emailadres
+        })
+    })
+        .then(resp => {
+            if (resp.status === 401) {
+                window.location.href = "./login.html";
+            }
+            if (!resp.ok) {
+                throw new Error("Er is iets fout gegaan");
+            }
+        }).catch(
+        error => {
+            console.log(error);
+            window.location.href = "./login.html";
+        }
+    )
+}
+
 //functie om kaartkleur en api naar backend te schrijven
 function updateCardPreferences() {
     
@@ -101,8 +130,8 @@ function updateCardPreferences() {
     let foundcardcolor = document.getElementById("closedcardcolor").value;
     let apipref = document.getElementById("theme").value;
 
-    console.log(foundcardcolor);
-    console.log(apipref);
+    //console.log(foundcardcolor);
+    //console.log(apipref);
 
     fetch("http://localhost:8000/api/player/" + getPlayerID() + "/preferences", {
         method: 'POST',
@@ -129,6 +158,24 @@ function updateCardPreferences() {
             window.location.href = "./login.html";
         }
     )
+}
 
+//functie welke de top 5 scores ophaalt
+function getTopfive() {
 
+    fetch("http://localhost:8000/scores/")
+        .then(resp => resp.json())
+        .then(scorelist => {
+
+            //hier komt de code om de list een top 5 html te maken
+            //stap1 loopje maken met console log voor top 5 (data juist binnenkrijgen)
+            //stap2 pas na stap 1 met de html bezig gaan
+            
+            console.log(scorelist)
+
+        }).catch(
+        error => {
+            console.log(error);
+        }
+    )
 }
