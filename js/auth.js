@@ -71,7 +71,7 @@ function setNavbarLinks() {
     }
 }
 
-//haal de naam op van de inlogde speler. als er geen speler is ingelogd geef dan niets weer
+//haal de naam op van de inlogde speler. als er geen speler is ingelogd return null
 function getPlayerName() {
     if (hasToken) {
         let payload = getPayload(getLocalToken());
@@ -80,4 +80,55 @@ function getPlayerName() {
     else {
         return null;
     }
+}
+
+//haal de id op van de ingelogde speler. aks er geen speler is ingelogd return null
+function getPlayerID() {
+    if (hasToken) {
+        let payload = getPayload(getLocalToken());
+        return payload.sub;
+    }
+    else {
+        return null;
+    }
+}
+
+//functie om kaartkleur en api naar backend te schrijven
+function updateCardPreferences() {
+    
+    let closedcardcolor = document.getElementById("closedcardcolor").value;
+    //let opencardcolor = document.getElementById("closedcardcolor").value;
+    let foundcardcolor = document.getElementById("closedcardcolor").value;
+    let apipref = document.getElementById("theme").value;
+
+    console.log(foundcardcolor);
+    console.log(apipref);
+
+    fetch("http://localhost:8000/api/player/" + getPlayerID() + "/preferences", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8',
+            'Authorization': 'Bearer ' + getLocalToken()
+        },
+        body: JSON.stringify({
+            color_found: foundcardcolor,
+            color_closed: closedcardcolor,
+            api: apipref
+        })
+    })
+        .then(resp => {
+            if (resp.status === 401) {
+                window.location.href = "./login.html";
+            }
+            if (!resp.ok) {
+                throw new Error("Er is iets fout gegaan");
+            }
+        }).catch(
+        error => {
+            console.log(error);
+            window.location.href = "./login.html";
+        }
+    )
+
+
 }

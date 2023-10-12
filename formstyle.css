@@ -46,3 +46,11 @@ h2 {
 .btn:hover {
     background-color: #0056b3;
 }
+
+
+
+.selector {
+    font-size: large;
+    width:175px;
+    height: 35px;
+}

@@ -2,7 +2,7 @@
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width-device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instellingen</title>
     <link rel="stylesheet" type="text/css" href="formstyle.css">
     <link rel="stylesheet" type="text/css" href="navbarstyle.css">
@@ -17,9 +17,9 @@
             </script>
         </ul>
     </nav>
-    <div class="container">
-        <h2>Instellingen</h2>
-        <form id="settingsForm">
+    <div class="container" style="margin-bottom: 3%;">
+        <h2>Spelinstellingen</h2>
+        
             <div class="input-group">
                 <label for="theme">Thema:</label>
                 <select id="theme" name="theme">
@@ -42,17 +42,17 @@
             <!-- Voeg hier 3 cardcolor pickers toe voor de gesloten, open en gevonden kaarten -->
             <div class="input-group">
                 <label for="closedcardcolor">Gesloten kaart kleur:</label>
-                <input type="color" id="closedcardcolor" name="closedcardcolor" value="#575366">
+                <input type="color" id="closedcardcolor" name="closedcardcolor" value="#575366" style="height: 35px; width: 175px; padding: 1px;">
             </div>
 
             <div class="input-group">
                 <label for="opencardcolor">Open kaart kleur:</label>
-                <input type="color" id="opencardcolor" name="opencardcolor" value="#ffffff">
+                <input type="color" id="opencardcolor" name="opencardcolor" value="#ffffff" style="height: 35px; width: 175px; padding: 1px;">
             </div>
 
             <div class="input-group">
                 <label for="foundcardcolor">Gevonden kaart kleur:</label>
-                <input type="color" id="foundcardcolor" name="foundcardcolor" value="#00ff00">
+                <input type="color" id="foundcardcolor" name="foundcardcolor" value="#00ff00" style="height: 35px; width: 175px; padding: 1px;">
             </div>
 
             <!-- Voeg hier meer instellingen toe indien nodig -->
@@ -62,6 +62,16 @@
             <!-- Het e-mailadres wordt alleen gewijzigd als de gebruiker op de bevestigingsknop klikt -->
             <!-- Het e-mailadres wordt gevalideerd met behulp van een reguliere expressie -->
             <!-- Bron: 6 -->
+            
+            
+            <button type="submit" class="btn" style="height: 35px; width: 175px; padding: 1px;" onclick="updateCardPreferences();">Spelinstellingen opslaan</button>
+
+        
+    </div>
+
+    <div class="container" style="margin-bottom: 3%;">
+        <h2>Profielinstellingen</h2>
+        <form id="profilesettings">
             
             <div class="input-group">
                 <label for="email">E-mailadres:</label>
@@ -74,8 +84,7 @@
                 <!-- De API-aanroep stuurt het nieuwe e-mailadres als JSON-gegevens in de body -->
                 <!-- De API-aanroep ontvangt een JSON-antwoord met een statuscode en een bericht -->
                 <!-- De functie verwerkt het antwoord en toont het bericht aan de gebruiker -->
-                
-                <button type="button" id="confirmEmail" onclick="confirmEmail()">Bevestigen</button>
+            
 
                 <!-- Voeg hier een script toe dat de functie voor het bevestigen van het e-mailadres definieert -->
                 
@@ -130,7 +139,7 @@
             </div>
 
             <!-- Voeg hier een knop toe om de wijzigingen op te slaan -->
-            <button type="submit" class="btn">Opslaan</button>
+            <button type="submit" class="btn">E-mailadres wijzigen</button>
 
         </form>
     </div>
