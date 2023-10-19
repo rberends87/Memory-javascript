@@ -17,7 +17,7 @@
 </head>
 
 
-<body backgroud-color onload="createGame();">
+<body backgroud-color onload="createGame(),getTopfive();">
 
     <p id="demo"></p>
 
@@ -57,12 +57,8 @@
             <div class="menuouter">
                 <div class="menuinner">
                     <h2>Top 5:</h2>
-                    <ol>
-                        <li>speler 1 (80)</li>
-                        <li>speler 5 (110)</li>
-                        <li>speler 3 (120)</li>
-                        <li>speler 7 (160)</li>
-                        <li>speler 9 (299)</li>
+                    <ol id="top5list">
+
                     </ol>
                     <h3>Gemiddelde speeltijd: 83</h3>
                 </div>
